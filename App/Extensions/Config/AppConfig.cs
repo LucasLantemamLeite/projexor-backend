@@ -1,3 +1,5 @@
+using App.Middlewares;
+
 namespace App.Extensions.Config;
 
 public static partial class Inject
@@ -6,6 +8,8 @@ public static partial class Inject
     {
         public WebApplication ApplyAppConfig()
         {
+            app.UseMiddleware<ExceptionMiddleware>();
+
             return app;
         }
     }
