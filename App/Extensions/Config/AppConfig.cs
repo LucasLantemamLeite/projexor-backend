@@ -8,7 +8,23 @@ public static partial class Inject
     {
         public WebApplication ApplyAppConfig()
         {
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UsePathBase("/v1");
+
+            app.UseHealthChecks("/health");
+
             app.UseMiddleware<ExceptionMiddleware>();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.MapControllers();
 
             return app;
         }
