@@ -1,4 +1,5 @@
 using App.Data.Context;
+using App.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +12,10 @@ public static partial class Inject
         public WebApplicationBuilder ApplyBuildConfig(IConfiguration configuration)
         {
             var conn = configuration.GetConnectionString("Default");
-
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn));
+
+            var key = configuration.GetValue<string>("JwtKey") ?? throw new NullReferenceException("JwtKey não encontrada.");
+            JwtToken.SetJwtKey(key);
 
             builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
 
