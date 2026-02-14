@@ -1,6 +1,6 @@
 using App.Shared.Base;
 
-namespace App.Features.Users;
+namespace App.Features.Users.Models;
 
 public sealed class User : Entity
 {

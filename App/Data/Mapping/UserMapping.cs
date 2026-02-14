@@ -1,4 +1,4 @@
-using App.Features.Users;
+using App.Features.Users.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
