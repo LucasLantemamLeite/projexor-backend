@@ -10,7 +10,7 @@ public static class JwtToken
 {
     public static string Key { get; private set; } = string.Empty;
 
-    public static void SetJwtKey(string key)
+    public static void SetKey(string key)
         => Key = key;
 
     extension(User user)
@@ -26,6 +26,8 @@ public static class JwtToken
             {
                 SigningCredentials = credentials,
                 Expires = DateTime.UtcNow.AddHours(4),
+                Audience = "ProjexorClient",
+                Issuer = "ProjexorServer",
 
                 Subject = new ClaimsIdentity(
                 [
