@@ -47,5 +47,15 @@ public sealed class UserMapping : IEntityTypeConfiguration<User>
             .HasColumnName("Created")
             .HasColumnType("datetime2")
             .IsRequired();
+
+        builder.Property(u => u.Updated)
+            .HasColumnName("Updated")
+            .HasColumnType("datetime2")
+            .IsRequired();
+
+        builder.Property(u => u.Active)
+            .HasColumnName("Active")
+            .HasColumnType("bit")
+            .IsRequired();
     }
 }
