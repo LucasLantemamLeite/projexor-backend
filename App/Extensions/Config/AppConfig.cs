@@ -12,9 +12,13 @@ public static partial class Inject
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UsePathBase("/v1");
 
-            app.UseHealthChecks("/health");
+            app.UseHealthChecks("/v1/health");
 
             app.UseMiddleware<ExceptionMiddleware>();
 
